@@ -1,7 +1,7 @@
 # Assignment 3 - Complete Documentation
 
-**Student Name**: [Your Full Name]  
-**Student ID**: [Your ID]  
+**Student Name**: [mohra saad altamimi]  
+**Student ID**: [445052020]  
 **Date Submitted**: [Submission Date]
 
 ---
@@ -31,69 +31,69 @@
 
 Document your development process with **minimum 3 entries** showing progression:
 
-### Entry 1 - [Date, Time]
+### Entry 1 - [May 2, 2026, 2:00 PM]
 **What I implemented**: 
-
+I began by looking for shared resources like contextSwitchCount, completedProcessCount, totalWaitingTime, and executionLog in the given code.
 **Challenges encountered**: 
-
+recognizing potential locations for race situations in a multi-threaded context.
 **How I solved it**: 
-
+I looked over Operating System ideas (10th Edition) synchronization ideas and identified important passages.
 **Testing approach**: 
-
+Before synchronization, I ran the software several times and noticed inconsistent behavior.
 **Time spent**: 
-
+2 hours
 ---
 
-### Entry 2 - [Date, Time]
+### Entry 2 - [May 2, 2026, 7:00 PM]
 **What I implemented**: 
-
+To safeguard shared counters, I created ReentrantLock.
 **Challenges encountered**: 
-
+ensuring that locks are always released in order to prevent deadlocks.
 **How I solved it**: 
-
+I surrounded every crucial area with try-finally blocks.
 **Testing approach**: 
-
+tested counter values following several iterations.
 **Time spent**: 
-
+2.5 hours
 ---
 
-### Entry 3 - [Date, Time]
+### Entry 3 - [May 3, 2026 3:00 PM]
 **What I implemented**: 
-
+I used a different lock to implement synchronization for executionLog.
 **Challenges encountered**: 
-
+preventing ConcurrentModificationException when an ArrayList is accessed by many threads.
 **How I solved it**: 
-
+used a special lock for the list called logLock.
 **Testing approach**: 
-
+checked logs to make sure there were no crashes.
 **Time spent**: 
-
+2 hours
 ---
 
-### Entry 4 - [Date, Time]
+### Entry 4 - [May 3, 2026, 6:00 PM]
 **What I implemented**: 
-
+To regulate CPU access, I included a semaphore.
 **Challenges encountered**: 
-
+knowing how to restrict the execution of threads.
 **How I solved it**: 
-
+utilized a single permit binary semaphore.
 **Testing approach**: 
-
+made sure that just one process runs concurrently.
 **Time spent**: 
-
+2 hours
 ---
 
-### Entry 5 - [Date, Time]
+### Entry 5 - [May 3, 2026 9:00 PM]
 **What I implemented**: 
-
+final examination and confirmation.
 **Challenges encountered**: 
-
+maintaining uniformity throughout several runs.
 **How I solved it**: 
-
+repeated execution and output verification.
 **Testing approach**: 
-
+ran the software five times.
 **Time spent**: 
-
+1.5 hours
 ---
 
 ## Part 2: Technical Questions (1 mark)
@@ -106,7 +106,6 @@ Document your development process with **minimum 3 entries** showing progression
 
 **Your Answer**:
 
-[Your answer here - 4-6 sentences with code examples]
 
 ---
 
