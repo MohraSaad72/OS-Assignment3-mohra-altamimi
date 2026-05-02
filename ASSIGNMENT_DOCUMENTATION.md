@@ -106,7 +106,7 @@ ran the software five times.
 
 **Your Answer**:
 
-
+The contextSwitchCount variable has one race condition. This shared variable is incremented concurrently by multiple threads, which could result in lost changes because of non-atomic operations. Another race condition in executionLog is the addition of elements to an ArrayList by several threads, which is not thread-safe. Inconsistent logs or even runtime errors like ConcurrentModificationException could arise from this. The final values of counters and logs would be erroneous and unpredictable in the absence of synchronization.
 ---
 
 ### Question 2: Locks vs Semaphores
@@ -114,8 +114,7 @@ ran the software five times.
 
 **Your Answer**:
 
-[Your answer here - explain your implementation choices]
-
+Only one thread can access a crucial area at a time thanks to mutual exclusion provided by a ReentrantLock. It was employed in this assignment to safeguard the execution log and shared counters. In contrast, a semaphore regulates access to a restricted set of resources. To simulate CPU access and make sure that only one process runs at a time, I utilized a binary semaphore (with one permit). Semaphores are used to manage resources, whereas locks are intended to secure data.
 ---
 
 ### Question 3: Deadlock Prevention
@@ -123,8 +122,7 @@ ran the software five times.
 
 **Your Answer**:
 
-[Your answer here - reference try-finally blocks, lock ordering, etc.]
-
+When two or more threads wait endlessly for resources owned by one another, this is known as deadlock. Using try-finally blocks to guarantee that locks are always released is one preventative strategy. Keeping a constant lock acquisition order is another strategy. By constantly releasing locks and semaphores in the finally block, I was able to avoid deadlocks in this code and make sure that no thread kept a resource permanently.
 ---
 
 ### Question 4: Lock Granularity Design Decision 
@@ -136,8 +134,7 @@ ran the software five times.
 
 **Your Answer**:
 
-[Your answer here - explain coarse-grained vs fine-grained locking, independence of counters, concurrency implications. Show understanding of when to use each approach. 5-8 sentences expected.]
-
+To safeguard all three counters, I employed a single lock (coarse-grained locking). This method avoids complexity and streamlines the design. However, because the counters are independent, fine-grained locking—separate locks for each counter—might offer greater concurrency. Performance and simplicity are traded off. I gave simplicity and accuracy first priority in this project, which is appropriate for a classroom setting.
 ---
 
 ## Part 3: Synchronization Analysis (1 mark)
