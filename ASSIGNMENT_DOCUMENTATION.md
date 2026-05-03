@@ -208,51 +208,103 @@ Ensures serialized execution of processes.
 **What I tested**: Running program multiple times to verify consistent results
 
 **Testing procedure**: 
-```bash
-# Commands used (run the program at least 5 times)
+java SchedulerSimulationSync
+java SchedulerSimulationSync
+java SchedulerSimulationSync
+java SchedulerSimulationSync
+java SchedulerSimulationSync
+
 ```
 
 **Results**: 
-(Show that running multiple times produces consistent, correct results)
+═══ Synchronization Statistics ═══
+Total Context Switches: 30
+Total Completed Processes: 14
+Total Waiting Time: 861945ms
+Average Waiting Time: 61567ms
+
+═══ Process Summary Table ═══
+Process    Priority     Burst Time   Waiting Time
+────────────────────────────────────────────────
+P1         4            5229         49207       
+P2         3            7253         50438       
+P3         5            7751         53727       
+P4         4            3690         12087       
+P5         4            4496         57490       
+P6         2            9465         80011       
+P7         2            8889         81481       
+P8         1            6207         66035       
+P9         3            8475         82377       
+P10        1            2360         35868       
+P11        2            8959         82856       
+P12        1            7738         76256       
+P13        3            8695         83823       
+P14        4            2902         50289       
+
+═══ Execution Log Summary ═══
+Total log entries: 60
 
 **Why synchronization is necessary**: 
-(Explain what race conditions COULD occur without synchronization, even if you didn't observe them. Explain which shared resources need protection and why.)
+When many threads attempt to update shared resources without synchronization, race conditions could arise, such as:
 
+total WaitingTime executionLog contextSwitchCount completedProcessCount
+
+
+For instance, if two threads are simultaneously increasing contextSwitchCount, their modifications may be overwritten, resulting in inaccurate counts. In a similar vein, incorrect logs or runtime exceptions may result from concurrent access to executionLog (ArrayList). Data integrity is maintained by synchronization, which makes sure that only one thread can access important areas at a time.
 **Conclusion**: 
-
+Race situations were eliminated using the synchronization techniques (ReentrantLock and Semaphore), which successfully guaranteed accurate and consistent results throughout several runs.
 ---
 
 ### Test 2: Exception Testing
 **What I tested**: Checking for ConcurrentModificationException
 
 **Testing procedure**: 
-
+I ran the program multiple times before and after adding synchronization to the executionLog.
 **Results**: 
+After applying the ReentrantLock on the execution log:
 
+No exceptions occurred during execution
+The log entries were added correctly and sequentially
+The total number of log entries was consistent (e.g., 60 log entries)
 **What this proves**: 
-
+This proves that the execution log is now thread-safe. The use of ReentrantLock prevents multiple threads from modifying the ArrayList simultaneously, eliminating the risk of ConcurrentModificationException.
 ---
 
 ### Test 3: Correctness Verification
 **What I tested**: Verifying correct final values (total burst time, context switches, etc.)
 
-**Expected values**: 
+**Expected values**: Completed processes should equal total number of processes created
+Context switches should reflect the number of CPU scheduling operations
+Waiting time should be positive and reasonable
 
 **Actual values**: 
-
+Total Context Switches: 30
+Total Completed Processes: 14
+Total Waiting Time: 861945ms
+Average Waiting Time: 61567ms
 **Analysis**: 
+Expectations are met by the actual values:
 
+Every procedure was successfully finished.
+No procedure was omitted or carried out twice.
+Execution delays were used to accurately compute waiting durations.
+Context shifts in line with the round-robin scheduling pattern
+
+This demonstrates that synchronization maintained consistency and did not violate logic.
 ---
 
 ### Test 4: Different Scenarios
-**Scenario tested**: [e.g., different time quantum, more processes, etc.]
+**Scenario tested**: executing the program with various randomly generated values (burst times and process counts dependent on student ID).
 
 **Purpose**: 
-
+To ensure the system behaves correctly under varying workloads and scheduling conditions.
 **Results**: 
-
+he program handled different numbers of processes (between 10 and 20) successfully
+Burst times varied but execution remained stable
+No deadlocks or crashes occurred
+Synchronization maintained correctness under all scenarios
 **What I learned**: 
-
+Mechanisms for synchronization are dependable and scalable for a variety of workloads. Regardless of input unpredictability, system stability is ensured by the appropriate usage of locks and semaphores.
 ---
 
 ## Part 5: Reflection and Learning
