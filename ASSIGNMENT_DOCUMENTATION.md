@@ -2,7 +2,7 @@
 
 **Student Name**: [mohra saad altamimi]  
 **Student ID**: [445052020]  
-**Date Submitted**: [Submission Date]
+**Date Submitted**: [3 may ,2026]
 
 ---
 
@@ -14,9 +14,9 @@
 > Set sharing to "Anyone with the link can view".
 > Test the link in incognito/private mode before submitting.
 
-**Video Link**: [Paste your personal Gmail Google Drive link here]
+**Video Link**: (https://drive.google.com/file/d/17MS__hzyBBNm47hMmbVl6GmyfeUKLnDG/view?usp=sharing)
 
-**Video filename**: `[YourStudentID]_Assignment3_Synchronization.mp4`
+**Video filename**: `[445052020]_Assignment3_Synchronization.mp4`
 
 **Verification**:
 - [ ] Link is accessible (tested in incognito mode)
@@ -331,31 +331,38 @@ Having a single key to a shared room is analogous to synchronization. Only one p
 
 ## Part 6: GitHub Repository Information
 
-**Repository URL**: 
+**Repository URL**: https://github.com/MohraSaad72/OS-Assignment3-mohra-altamimi.git
 
-**Number of commits**: 
+**Number of commits**: 10 commits
 
 **Commit messages**: 
-1. 
-2. 
-3. 
-4. 
+1. Set my student ID: 445052020
+2. Add ReentrantLock and Semaphore imports and declarations
+3. Implement mutex protection for shared counters and execution log
+4. Add semaphore to control CPU access in run method
+5. Add semaphore handling in runToCompletion method
+6. answering part 1
+7. answering part 2
+8. answering part3
+9. answering part 4
+10. answering part 5
+   
 
 ---
 
 ## Summary
 
-**Total time spent on assignment**: 
+**Total time spent on assignment**: 2 days
 
 **Key takeaways**: 
-1. 
-2. 
-3. 
+1-In multi-threaded programs, race situations can lead to erroneous and unpredictable outcomes.
+2-Semaphores regulate resource access, while locks guarantee mutual exclusion.
+3-For the stability and accuracy of the system, proper synchronization is essential.
 
 **Most challenging aspect**: 
-
+identifying every crucial area and making sure locks are placed appropriately to prevent deadlocks.
 **What I'm most proud of**: 
-
+successfully putting in place synchronization techniques that removed race circumstances and yielded accurate, consistent results across several runs.
 ---
 
 **End of Documentation**
